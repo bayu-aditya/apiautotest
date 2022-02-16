@@ -1,0 +1,28 @@
+projectname: Kemnaker Satudata REST API
+tests:
+  http:
+    cases:
+    - name: Homepage Section
+      jobs:
+      - name: Banner Get List
+        request:
+          url: "https://satudata-dev.kemnaker.go.id/api/v1/banner/list_data"
+          method: GET
+        response:
+          statuscode: 200
+
+      - name: Gallery Get List
+        request:
+          url: "https://satudata-dev.kemnaker.go.id/api/v1/gallery/list_data?limit=3"
+          method: GET
+        response:
+          statuscode: 200
+          
+    - name: Infographic Section
+      jobs:
+      - name: Infographic Get List
+        request:
+          url: "https://satudata-dev.kemnaker.go.id/api/v1/infographics/list_data?page=1&limit=6&year=&search="
+          method: GET
+        response:
+          statuscode: 200
