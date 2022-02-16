@@ -2,20 +2,21 @@ package internal
 
 import (
 	"fmt"
-	"log"
 
+	"github.com/bayu-aditya/apiautotest/internal/core/input"
 	"github.com/urfave/cli/v2"
 )
 
 func ActionRun() func(c *cli.Context) error {
 	return func(c *cli.Context) error {
-		log.Println("running api test")
+		inputEngine := input.New()
 
+		fmt.Println("running api test")
 		fmt.Println("------------------------------------------------------------------------")
 
 		inputFileLoc := c.String("input")
-		fmt.Printf("Reading input file from %s \n\n", inputFileLoc)
-		inputFile, err := ReadInput(inputFileLoc)
+		fmt.Printf("Reading input file from: %s \n\n", inputFileLoc)
+		inputFile, err := inputEngine.ReadYamlFromFs(inputFileLoc)
 		if err != nil {
 			return err
 		}
