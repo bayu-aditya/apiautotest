@@ -37,7 +37,7 @@ func ActionRun() func(c *cli.Context) error {
 			for _, job := range httpCase.Jobs {
 				fmt.Printf("\tRunning Job: %s \n", job.Name)
 
-				var restOutput *core.RestEngineGetOutput
+				var restOutput *core.RestEngineOutput
 
 				switch job.Request.Method {
 				case "GET":
@@ -49,6 +49,7 @@ func ActionRun() func(c *cli.Context) error {
 					return fmt.Errorf("invalid method for case %s job %s", httpCase.Name, job.Name)
 				}
 
+				fmt.Printf("\t\tDuration: %s \n", restOutput.Duration)
 				fmt.Printf("\t\tStatus Code: %d \n", restOutput.StatusCode)
 
 				var warnings []string
