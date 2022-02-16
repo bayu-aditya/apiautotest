@@ -21,6 +21,6 @@ type HttpJob struct {
 		Method string
 	}
 	Response struct {
-		StatusCode string
+		StatusCode int
 	}
 }
